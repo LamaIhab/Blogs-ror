@@ -1,0 +1,10 @@
+# config/sidekiq.yml
+
+ :schedule:
+  delete_posts:
+#     cron: '0 * * * * *'   # Runs once per minute
+     class: DeletePosts
+     every: '24h' 
+
+
+ :dynamic: true
