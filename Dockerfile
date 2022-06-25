@@ -16,4 +16,4 @@ ADD . /app
 
 #RUN bundle exec rake db:migrate
 
-RUN bin/rails db:migrate RAILS_ENV=development
+#RUN bin/rails db:migrate RAILS_ENV=development
