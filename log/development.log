@@ -8025,3 +8025,1171 @@ Processing by PostsController#destroy as */*
 Completed 405 Method Not Allowed in 17ms (Views: 0.2ms | ActiveRecord: 2.2ms | Allocations: 1694)
 
 
+Started GET "/posts" for ::1 at 2022-06-25 12:08:45 +0200
+  [1m[36mActiveRecord::SchemaMigration Pluck (5.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by PostsController#index as */*
+Filter chain halted as :authentication rendered or redirected
+Completed 401 Unauthorized in 7ms (Views: 6.0ms | ActiveRecord: 0.0ms | Allocations: 307)
+
+
+Started POST "/login?email=lamai@gmail.com&password=[FILTERED]" for ::1 at 2022-06-25 12:09:16 +0200
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"lamai@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'lamai@gmail.com' LIMIT 1[0m
+  ↳ app/controllers/sessions_controller.rb:19:in `login'
+Completed 200 OK in 145ms (Views: 0.2ms | ActiveRecord: 50.6ms | Allocations: 22988)
+
+
+Started GET "/posts" for ::1 at 2022-06-25 12:09:36 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 29ms (Views: 2.7ms | ActiveRecord: 1.1ms | Allocations: 4437)
+
+
+Started POST "/posts?title=testin%20docker%20w&body=testing%20first%20post" for ::1 at 2022-06-25 12:10:29 +0200
+Processing by PostsController#create as */*
+  Parameters: {"tags"=>["lama", "ihab"], "title"=>"testin docker w", "body"=>"testing first post", "post"=>{"tags"=>["lama", "ihab"]}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mPost Create (47.7ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `tags`, `created_at`, `updated_at`, `user_id`) VALUES ('testin docker w', 'testing first post', '[\"lama\",\"ihab\"]', '2022-06-25 10:10:29.808871', '2022-06-25 10:10:29.808871', 2)[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+Completed 201 Created in 139ms (Views: 0.7ms | ActiveRecord: 62.1ms | Allocations: 11452)
+
+
+Started POST "/posts?title=yesss" for ::1 at 2022-06-25 12:11:01 +0200
+Processing by PostsController#create as */*
+  Parameters: {"tags"=>["lama", "ihab"], "title"=>"yesss", "post"=>{"tags"=>["lama", "ihab"]}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+Completed 417 Expectation Failed in 37ms (Views: 31.2ms | ActiveRecord: 0.6ms | Allocations: 3493)
+
+
+Started POST "/posts?title=yesss&body=fewuidosjklc" for ::1 at 2022-06-25 12:11:08 +0200
+Processing by PostsController#create as */*
+  Parameters: {"tags"=>["lama", "ihab"], "title"=>"yesss", "body"=>"fewuidosjklc", "post"=>{"tags"=>["lama", "ihab"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `tags`, `created_at`, `updated_at`, `user_id`) VALUES ('yesss', 'fewuidosjklc', '[\"lama\",\"ihab\"]', '2022-06-25 10:11:08.476129', '2022-06-25 10:11:08.476129', 2)[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+Completed 201 Created in 11ms (Views: 0.4ms | ActiveRecord: 2.4ms | Allocations: 3323)
+
+
+Started POST "/posts?title=yesss1&body=fewuidosjklc" for ::1 at 2022-06-25 12:11:12 +0200
+Processing by PostsController#create as */*
+  Parameters: {"tags"=>["lama", "ihab"], "title"=>"yesss1", "body"=>"fewuidosjklc", "post"=>{"tags"=>["lama", "ihab"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `tags`, `created_at`, `updated_at`, `user_id`) VALUES ('yesss1', 'fewuidosjklc', '[\"lama\",\"ihab\"]', '2022-06-25 10:11:12.916270', '2022-06-25 10:11:12.916270', 2)[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+Completed 201 Created in 26ms (Views: 0.6ms | ActiveRecord: 4.6ms | Allocations: 3302)
+
+
+Started POST "/posts?title=yesss1&body=fewuidosjklc" for ::1 at 2022-06-25 12:11:13 +0200
+Processing by PostsController#create as */*
+  Parameters: {"tags"=>["lama", "ihab"], "title"=>"yesss1", "body"=>"fewuidosjklc", "post"=>{"tags"=>["lama", "ihab"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `tags`, `created_at`, `updated_at`, `user_id`) VALUES ('yesss1', 'fewuidosjklc', '[\"lama\",\"ihab\"]', '2022-06-25 10:11:13.656603', '2022-06-25 10:11:13.656603', 2)[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+Completed 201 Created in 12ms (Views: 0.6ms | ActiveRecord: 3.5ms | Allocations: 3311)
+
+
+Started POST "/posts?title=yesss1&body=fewuidosjklc" for ::1 at 2022-06-25 12:11:14 +0200
+Processing by PostsController#create as */*
+  Parameters: {"tags"=>["lama", "ihab"], "title"=>"yesss1", "body"=>"fewuidosjklc", "post"=>{"tags"=>["lama", "ihab"]}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `tags`, `created_at`, `updated_at`, `user_id`) VALUES ('yesss1', 'fewuidosjklc', '[\"lama\",\"ihab\"]', '2022-06-25 10:11:14.420198', '2022-06-25 10:11:14.420198', 2)[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (45.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+Completed 201 Created in 58ms (Views: 0.6ms | ActiveRecord: 46.5ms | Allocations: 3312)
+
+
+Started POST "/comments/?post_id=14&description=thank%20you%21%21%21" for ::1 at 2022-06-25 12:11:42 +0200
+Processing by CommentsController#create as */*
+  Parameters: {"post_id"=>"14", "description"=>"thank you!!!"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 14 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+Completed 404 Not Found in 4ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 1397)
+
+
+Started POST "/comments/?post_id=19&description=thank%20you%21%21%21" for ::1 at 2022-06-25 12:11:47 +0200
+Processing by CommentsController#create as */*
+  Parameters: {"post_id"=>"19", "description"=>"thank you!!!"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mPost Load (2.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 19 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 19 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+  [1m[36mComment Create (8.5ms)[0m  [1m[32mINSERT INTO `comments` (`description`, `created_at`, `updated_at`, `post_id`, `user_id`) VALUES ('thank you!!!', '2022-06-25 10:11:47.155254', '2022-06-25 10:11:47.155254', 19, 2)[0m
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+Completed 201 Created in 59ms (Views: 0.4ms | ActiveRecord: 18.6ms | Allocations: 10231)
+
+
+Started POST "/comments/?post_id=19&description=thank%20you%21%21%21" for ::1 at 2022-06-25 12:11:49 +0200
+Processing by CommentsController#create as */*
+  Parameters: {"post_id"=>"19", "description"=>"thank you!!!"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 19 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 19 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+  [1m[36mComment Create (0.5ms)[0m  [1m[32mINSERT INTO `comments` (`description`, `created_at`, `updated_at`, `post_id`, `user_id`) VALUES ('thank you!!!', '2022-06-25 10:11:49.673208', '2022-06-25 10:11:49.673208', 19, 2)[0m
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+Completed 201 Created in 16ms (Views: 0.5ms | ActiveRecord: 3.8ms | Allocations: 4274)
+
+
+Started GET "/posts" for ::1 at 2022-06-25 12:11:54 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 2.7ms | ActiveRecord: 0.8ms | Allocations: 1816)
+
+
+Started GET "/posts" for ::1 at 2022-06-25 12:13:13 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 500 Internal Server Error in 82ms (ActiveRecord: 10.5ms | Allocations: 11616)
+
+
+  
+ActiveRecord::AssociationNotFoundError (Association named 'posts' was not found on Post; perhaps you misspelled it?):
+  
+app/controllers/posts_controller.rb:8:in `index'
+Started GET "/posts" for ::1 at 2022-06-25 12:13:33 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+  [1m[36mComment Load (43.9ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` IN (19, 20, 21, 22, 23)[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 184ms (Views: 66.5ms | ActiveRecord: 61.7ms | Allocations: 18999)
+
+
+Started GET "/posts" for ::1 at 2022-06-25 12:14:02 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 5.2ms | Allocations: 9440)
+
+
+  
+NameError (undefined local variable or method `comments' for #<PostsController:0x00000000015a18>
+Did you mean?  comments_url):
+  
+app/controllers/posts_controller.rb:7:in `index'
+Started GET "/posts" for ::1 at 2022-06-25 12:14:46 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` IN (19, 20, 21, 22, 23)[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 44ms (Views: 16.9ms | ActiveRecord: 10.2ms | Allocations: 15438)
+
+
+Started GET "/posts" for ::1 at 2022-06-25 12:17:09 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 3.8ms | Allocations: 9292)
+
+
+  
+NoMethodError (undefined method `comments' for #<PostsController:0x0000000001d678>
+Did you mean?  comments_url):
+  
+app/controllers/posts_controller.rb:7:in `index'
+Started GET "/posts" for ::1 at 2022-06-25 12:17:29 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` IN (19, 20, 21, 22, 23)[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 500 Internal Server Error in 85ms (ActiveRecord: 12.8ms | Allocations: 14992)
+
+
+  
+ActiveRecord::AssociationNotFoundError (Association named 'comments' was not found on Comment; perhaps you misspelled it?):
+  
+app/controllers/posts_controller.rb:8:in `index'
+Started GET "/posts" for ::1 at 2022-06-25 12:18:06 +0200
+  
+SyntaxError (/Users/macbookair/Desktop/Blogs-ror/app/controllers/posts_controller.rb:7: syntax error, unexpected '}', expecting =>
+....includes(comments: {:comments})
+...                              ^
+):
+  
+app/controllers/posts_controller.rb:7: syntax error, unexpected '}', expecting =>
+app/controllers/posts_controller.rb:7: syntax error, unexpected '}', expecting =>
+Started GET "/posts" for ::1 at 2022-06-25 12:18:53 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` IN (19, 20, 21, 22, 23)[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 100ms (Views: 29.5ms | ActiveRecord: 15.4ms | Allocations: 15490)
+
+
+Started GET "/posts" for ::1 at 2022-06-25 12:20:26 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` IN (19, 20, 21, 22, 23)[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 94ms (Views: 34.2ms | ActiveRecord: 12.3ms | Allocations: 15431)
+
+
+Started GET "/posts" for ::1 at 2022-06-25 12:21:30 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` IN (19, 20, 21, 22, 23)[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 5.7ms | ActiveRecord: 1.6ms | Allocations: 2757)
+
+
+Started GET "/posts" for ::1 at 2022-06-25 12:21:50 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 28ms (Views: 5.3ms | ActiveRecord: 6.9ms | Allocations: 10459)
+
+
+Started GET "/posts" for ::1 at 2022-06-25 12:23:11 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[35mSQL (42.9ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 109ms (Views: 38.0ms | ActiveRecord: 53.4ms | Allocations: 17694)
+
+
+Started GET "/posts" for ::1 at 2022-06-25 12:26:24 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 5.1ms | Allocations: 7649)
+
+
+  
+ArgumentError (The method .eager_load() must contain arguments.):
+  
+app/controllers/posts_controller.rb:7:in `index'
+Started GET "/posts" for ::1 at 2022-06-25 12:26:33 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 4.5ms | Allocations: 7575)
+
+
+  
+ArgumentError (The method .eager_load() must contain arguments.):
+  
+app/controllers/posts_controller.rb:7:in `index'
+Started GET "/posts" for ::1 at 2022-06-25 12:26:45 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 3.9ms | Allocations: 7734)
+
+
+  
+ActiveRecord::ConfigurationError (Can't join 'Post' to association named 'comment'; perhaps you misspelled it?):
+  
+app/controllers/posts_controller.rb:8:in `index'
+Started GET "/posts" for ::1 at 2022-06-25 12:26:57 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 40ms (Views: 14.9ms | ActiveRecord: 9.4ms | Allocations: 14615)
+
+
+Started GET "/posts" for ::1 at 2022-06-25 12:28:32 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 29ms (Views: 5.8ms | ActiveRecord: 7.4ms | Allocations: 10451)
+
+
+Started GET "/posts" for ::1 at 2022-06-25 12:29:09 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[35mSQL (0.6ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 47ms (Views: 16.5ms | ActiveRecord: 9.7ms | Allocations: 14692)
+
+
+Started GET "/posts" for ::1 at 2022-06-25 12:29:17 +0200
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 42ms (Views: 14.3ms | ActiveRecord: 12.7ms | Allocations: 14604)
+
+
+Started GET "/" for 172.19.0.1 at 2022-06-25 10:34:40 +0000
+  [1m[35m (41.5ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  [1m[35m (57.1ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 6 pending migrations:
+
+20220623100809_create_users.rb
+20220623150139_create_posts.rb
+20220623150900_add_user_to_posts.rb
+20220623150937_create_comments.rb
+20220623151007_add_post_to_comments.rb
+20220623151023_add_user_to_comments.rb
+
+
+):
+  
+activerecord (7.0.3) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.3) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.3) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.3) lib/active_record/migration.rb:597:in `block in call'
+activerecord (7.0.3) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.3) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/favicon.ico" for 172.19.0.1 at 2022-06-25 10:34:41 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 6 pending migrations:
+
+20220623100809_create_users.rb
+20220623150139_create_posts.rb
+20220623150900_add_user_to_posts.rb
+20220623150937_create_comments.rb
+20220623151007_add_post_to_comments.rb
+20220623151023_add_user_to_comments.rb
+
+
+):
+  
+activerecord (7.0.3) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.3) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.3) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.3) lib/active_record/migration.rb:597:in `block in call'
+activerecord (7.0.3) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.3) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/rails/actions" for 172.19.0.1 at 2022-06-25 10:34:46 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT GET_LOCK('6939591962871035475', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateUsers (20220623100809)
+  [1m[35m (51.8ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `email` varchar(255), `password` varchar(255), `image` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20220623100809')[0m
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePosts (20220623150139)
+  [1m[35m (42.3ms)[0m  [1m[35mCREATE TABLE `posts` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `title` varchar(255), `body` varchar(255), `tags` json, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.8ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20220623150139')[0m
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserToPosts (20220623150900)
+  [1m[35m (103.7ms)[0m  [1m[35mALTER TABLE `posts` ADD `user_id` bigint NOT NULL[0m
+  [1m[35m (39.3ms)[0m  [1m[35mCREATE INDEX `index_posts_on_user_id` ON `posts` (`user_id`)[0m
+  [1m[35m (143.7ms)[0m  [1m[35mALTER TABLE `posts` ADD CONSTRAINT `fk_rails_5b5ddfd518`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20220623150900')[0m
+  [1m[36mTRANSACTION (8.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateComments (20220623150937)
+  [1m[35m (48.7ms)[0m  [1m[35mCREATE TABLE `comments` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `description` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20220623150937')[0m
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPostToComments (20220623151007)
+  [1m[35m (83.0ms)[0m  [1m[35mALTER TABLE `comments` ADD `post_id` bigint NOT NULL[0m
+  [1m[35m (44.2ms)[0m  [1m[35mCREATE INDEX `index_comments_on_post_id` ON `comments` (`post_id`)[0m
+  [1m[35m (112.0ms)[0m  [1m[35mALTER TABLE `comments` ADD CONSTRAINT `fk_rails_2fd19c0db7`
+FOREIGN KEY (`post_id`)
+  REFERENCES `posts` (`id`)
+[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20220623151007')[0m
+  [1m[36mTRANSACTION (7.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserToComments (20220623151023)
+  [1m[35m (79.0ms)[0m  [1m[35mALTER TABLE `comments` ADD `user_id` bigint NOT NULL[0m
+  [1m[35m (32.6ms)[0m  [1m[35mCREATE INDEX `index_comments_on_user_id` ON `comments` (`user_id`)[0m
+  [1m[35m (141.4ms)[0m  [1m[35mALTER TABLE `comments` ADD CONSTRAINT `fk_rails_03de2dc08c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20220623151023')[0m
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.1ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2022-06-25 10:34:47.782100', '2022-06-25 10:34:47.782100')[0m
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT RELEASE_LOCK('6939591962871035475')[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/" for 172.19.0.1 at 2022-06-25 10:34:47 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 8.9ms | Allocations: 379)
+Completed 200 OK in 58ms (Views: 14.3ms | ActiveRecord: 0.0ms | Allocations: 3590)
+
+
+Started GET "//posts" for 172.19.0.1 at 2022-06-25 10:35:05 +0000
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:16:in `authentication'
+Completed 404 Not Found in 86ms (ActiveRecord: 2.7ms | Allocations: 4665)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=2):
+  
+app/controllers/application_controller.rb:16:in `authentication'
+Started GET "/" for 172.19.0.1 at 2022-06-25 10:38:44 +0000
+  [1m[35m (55.8ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  [1m[35m (72.6ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 6 pending migrations:
+
+20220623100809_create_users.rb
+20220623150139_create_posts.rb
+20220623150900_add_user_to_posts.rb
+20220623150937_create_comments.rb
+20220623151007_add_post_to_comments.rb
+20220623151023_add_user_to_comments.rb
+
+
+):
+  
+activerecord (7.0.3) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.3) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.3) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.3) lib/active_record/migration.rb:597:in `block in call'
+activerecord (7.0.3) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.3) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/favicon.ico" for 172.19.0.1 at 2022-06-25 10:38:46 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 6 pending migrations:
+
+20220623100809_create_users.rb
+20220623150139_create_posts.rb
+20220623150900_add_user_to_posts.rb
+20220623150937_create_comments.rb
+20220623151007_add_post_to_comments.rb
+20220623151023_add_user_to_comments.rb
+
+
+):
+  
+activerecord (7.0.3) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.3) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.3) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.3) lib/active_record/migration.rb:597:in `block in call'
+activerecord (7.0.3) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.3) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/rails/actions" for 172.19.0.1 at 2022-06-25 10:38:47 +0000
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT GET_LOCK('6939591962871035475', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateUsers (20220623100809)
+  [1m[35m (44.6ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `email` varchar(255), `password` varchar(255), `image` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20220623100809')[0m
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePosts (20220623150139)
+  [1m[35m (43.3ms)[0m  [1m[35mCREATE TABLE `posts` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `title` varchar(255), `body` varchar(255), `tags` json, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20220623150139')[0m
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserToPosts (20220623150900)
+  [1m[35m (94.1ms)[0m  [1m[35mALTER TABLE `posts` ADD `user_id` bigint NOT NULL[0m
+  [1m[35m (40.5ms)[0m  [1m[35mCREATE INDEX `index_posts_on_user_id` ON `posts` (`user_id`)[0m
+  [1m[35m (128.7ms)[0m  [1m[35mALTER TABLE `posts` ADD CONSTRAINT `fk_rails_5b5ddfd518`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20220623150900')[0m
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateComments (20220623150937)
+  [1m[35m (63.6ms)[0m  [1m[35mCREATE TABLE `comments` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `description` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20220623150937')[0m
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPostToComments (20220623151007)
+  [1m[35m (78.5ms)[0m  [1m[35mALTER TABLE `comments` ADD `post_id` bigint NOT NULL[0m
+  [1m[35m (35.7ms)[0m  [1m[35mCREATE INDEX `index_comments_on_post_id` ON `comments` (`post_id`)[0m
+  [1m[35m (109.3ms)[0m  [1m[35mALTER TABLE `comments` ADD CONSTRAINT `fk_rails_2fd19c0db7`
+FOREIGN KEY (`post_id`)
+  REFERENCES `posts` (`id`)
+[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20220623151007')[0m
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserToComments (20220623151023)
+  [1m[35m (72.1ms)[0m  [1m[35mALTER TABLE `comments` ADD `user_id` bigint NOT NULL[0m
+  [1m[35m (47.6ms)[0m  [1m[35mCREATE INDEX `index_comments_on_user_id` ON `comments` (`user_id`)[0m
+  [1m[35m (120.0ms)[0m  [1m[35mALTER TABLE `comments` ADD CONSTRAINT `fk_rails_03de2dc08c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20220623151023')[0m
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2022-06-25 10:38:49.092586', '2022-06-25 10:38:49.092586')[0m
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT RELEASE_LOCK('6939591962871035475')[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/" for 172.19.0.1 at 2022-06-25 10:38:49 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 4.3ms | Allocations: 379)
+Completed 200 OK in 44ms (Views: 8.2ms | ActiveRecord: 0.0ms | Allocations: 3590)
+
+
+Started GET "//posts" for 172.19.0.1 at 2022-06-25 10:38:54 +0000
+  
+SyntaxError (/app/app/controllers/application_controller.rb:28: syntax error, unexpected {, expecting literal content or terminator or tSTRING_DBEG or tSTRING_DVAR
+  render json :{message: "Unauthorized"},stat...
+               ^
+/app/app/controllers/application_controller.rb:28: syntax error, unexpected ',', expecting `end'
+...son :{message: "Unauthorized"},status: 401
+...                              ^
+):
+  
+app/controllers/application_controller.rb:28: syntax error, unexpected {, expecting literal content or terminator or tSTRING_DBEG or tSTRING_DVAR
+app/controllers/application_controller.rb:28: syntax error, unexpected ',', expecting `end'
+app/controllers/application_controller.rb:28: syntax error, unexpected {, expecting literal content or terminator or tSTRING_DBEG or tSTRING_DVAR
+app/controllers/application_controller.rb:28: syntax error, unexpected ',', expecting `end'
+app/controllers/posts_controller.rb:1:in `<main>'
+Started GET "/" for 172.19.0.1 at 2022-06-25 10:39:56 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 11.1ms | Allocations: 635)
+Completed 200 OK in 146ms (Views: 41.7ms | ActiveRecord: 0.0ms | Allocations: 5617)
+
+
+Started GET "/" for 172.19.0.1 at 2022-06-25 10:39:59 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.1ms | Allocations: 369)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.0ms | Allocations: 1209)
+
+
+Started GET "//posts" for 172.19.0.1 at 2022-06-25 10:40:10 +0000
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+Filter chain halted as :authentication rendered or redirected
+Completed 401 Unauthorized in 87ms (Views: 0.6ms | ActiveRecord: 3.3ms | Allocations: 6013)
+
+
+Started POST "/signup?email=lama@homzmart.com&password=[FILTERED]&image=https://rfudijc.com&name=lamaaaa" for 172.19.0.1 at 2022-06-25 10:40:29 +0000
+Processing by SessionsController#signup as */*
+  Parameters: {"email"=>"lama@homzmart.com", "password"=>"[FILTERED]", "image"=>"https://rfudijc.com", "name"=>"lamaaaa", "session"=>{}}
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/sessions_controller.rb:6:in `signup'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'lama@homzmart.com' LIMIT 1[0m
+  ↳ app/controllers/sessions_controller.rb:6:in `signup'
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `password`, `image`, `created_at`, `updated_at`) VALUES ('lamaaaa', 'lama@homzmart.com', '1234444', 'https://rfudijc.com', '2022-06-25 10:40:29.227289', '2022-06-25 10:40:29.227289')[0m
+  ↳ app/controllers/sessions_controller.rb:6:in `signup'
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/sessions_controller.rb:6:in `signup'
+Completed 200 OK in 41ms (Views: 0.2ms | ActiveRecord: 6.9ms | Allocations: 7994)
+
+
+Started POST "/posts?title=yesss1&body=fewuidosjklc" for 172.19.0.1 at 2022-06-25 10:41:07 +0000
+Processing by PostsController#create as */*
+  Parameters: {"tags"=>["lama", "ihab"], "title"=>"yesss1", "body"=>"fewuidosjklc", "post"=>{"tags"=>["lama", "ihab"]}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `tags`, `created_at`, `updated_at`, `user_id`) VALUES ('yesss1', 'fewuidosjklc', '[\"lama\",\"ihab\"]', '2022-06-25 10:41:07.397868', '2022-06-25 10:41:07.397868', 1)[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+Completed 201 Created in 105ms (Views: 0.4ms | ActiveRecord: 9.5ms | Allocations: 9960)
+
+
+Started POST "/posts?title=yesss1&body=fewuidosjklc" for 172.19.0.1 at 2022-06-25 10:41:09 +0000
+Processing by PostsController#create as */*
+  Parameters: {"tags"=>["lama", "ihab"], "title"=>"yesss1", "body"=>"fewuidosjklc", "post"=>{"tags"=>["lama", "ihab"]}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mPost Create (1.1ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `tags`, `created_at`, `updated_at`, `user_id`) VALUES ('yesss1', 'fewuidosjklc', '[\"lama\",\"ihab\"]', '2022-06-25 10:41:09.475079', '2022-06-25 10:41:09.475079', 1)[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+Completed 201 Created in 35ms (Views: 0.5ms | ActiveRecord: 12.3ms | Allocations: 3360)
+
+
+Started POST "/posts?title=yesss1&body=fewuidosjklc" for 172.19.0.1 at 2022-06-25 10:41:10 +0000
+Processing by PostsController#create as */*
+  Parameters: {"tags"=>["lama", "ihab"], "title"=>"yesss1", "body"=>"fewuidosjklc", "post"=>{"tags"=>["lama", "ihab"]}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mPost Create (1.3ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `tags`, `created_at`, `updated_at`, `user_id`) VALUES ('yesss1', 'fewuidosjklc', '[\"lama\",\"ihab\"]', '2022-06-25 10:41:10.375319', '2022-06-25 10:41:10.375319', 1)[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+Completed 201 Created in 31ms (Views: 0.4ms | ActiveRecord: 6.5ms | Allocations: 3354)
+
+
+Started POST "/posts?title=yesss1&body=fewuidosjklc" for 172.19.0.1 at 2022-06-25 10:41:11 +0000
+Processing by PostsController#create as */*
+  Parameters: {"tags"=>["lama", "ihab"], "title"=>"yesss1", "body"=>"fewuidosjklc", "post"=>{"tags"=>["lama", "ihab"]}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `tags`, `created_at`, `updated_at`, `user_id`) VALUES ('yesss1', 'fewuidosjklc', '[\"lama\",\"ihab\"]', '2022-06-25 10:41:11.206106', '2022-06-25 10:41:11.206106', 1)[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (7.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:30:in `create'
+Completed 201 Created in 34ms (Views: 0.5ms | ActiveRecord: 9.7ms | Allocations: 3347)
+
+
+Started POST "/comments/?post_id=19&description=thank%20you%21%21%21" for 172.19.0.1 at 2022-06-25 10:41:30 +0000
+Processing by CommentsController#create as */*
+  Parameters: {"post_id"=>"19", "description"=>"thank you!!!"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+Filter chain halted as :authentication rendered or redirected
+Completed 401 Unauthorized in 10ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 708)
+
+
+Started POST "/comments/?post_id=19&description=thank%20you%21%21%21" for 172.19.0.1 at 2022-06-25 10:41:48 +0000
+Processing by CommentsController#create as */*
+  Parameters: {"post_id"=>"19", "description"=>"thank you!!!"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+Filter chain halted as :authentication rendered or redirected
+Completed 401 Unauthorized in 9ms (Views: 0.4ms | ActiveRecord: 0.8ms | Allocations: 640)
+
+
+Started POST "/comments/?post_id=19&description=thank%20you%21%21%21" for 172.19.0.1 at 2022-06-25 10:41:51 +0000
+Processing by CommentsController#create as */*
+  Parameters: {"post_id"=>"19", "description"=>"thank you!!!"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+Filter chain halted as :authentication rendered or redirected
+Completed 401 Unauthorized in 8ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 640)
+
+
+Started POST "/comments/?post_id=19&description=thank%20you%21%21%21" for 172.19.0.1 at 2022-06-25 10:41:59 +0000
+Processing by CommentsController#create as */*
+  Parameters: {"post_id"=>"19", "description"=>"thank you!!!"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+Filter chain halted as :authentication rendered or redirected
+Completed 401 Unauthorized in 19ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 641)
+
+
+Started POST "/comments/?post_id=4&description=thank%20you%21%21%21" for 172.19.0.1 at 2022-06-25 10:42:08 +0000
+Processing by CommentsController#create as */*
+  Parameters: {"post_id"=>"4", "description"=>"thank you!!!"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+Filter chain halted as :authentication rendered or redirected
+Completed 401 Unauthorized in 9ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 640)
+
+
+Started POST "/comments/?post_id=4&description=thank%20you%21%21%21" for 172.19.0.1 at 2022-06-25 10:42:09 +0000
+Processing by CommentsController#create as */*
+  Parameters: {"post_id"=>"4", "description"=>"thank you!!!"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+Filter chain halted as :authentication rendered or redirected
+Completed 401 Unauthorized in 8ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 640)
+
+
+Started POST "/comments/?post_id=4&description=thank%20you%21%21%21" for 172.19.0.1 at 2022-06-25 10:42:53 +0000
+Processing by CommentsController#create as */*
+  Parameters: {"post_id"=>"4", "description"=>"thank you!!!"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+  [1m[36mComment Create (0.8ms)[0m  [1m[32mINSERT INTO `comments` (`description`, `created_at`, `updated_at`, `post_id`, `user_id`) VALUES ('thank you!!!', '2022-06-25 10:42:53.673958', '2022-06-25 10:42:53.673958', 4, 1)[0m
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:16:in `create'
+Completed 201 Created in 120ms (Views: 0.6ms | ActiveRecord: 11.5ms | Allocations: 11388)
+
+
+Started POST "/comments/?post_id=14&description=thank%20you%21%21%21" for 172.19.0.1 at 2022-06-25 10:42:59 +0000
+Processing by CommentsController#create as */*
+  Parameters: {"post_id"=>"14", "description"=>"thank you!!!"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 14 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+Completed 404 Not Found in 12ms (Views: 0.2ms | ActiveRecord: 1.5ms | Allocations: 1165)
+
+
+Started GET "//posts" for 172.19.0.1 at 2022-06-25 10:43:24 +0000
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[35mSQL (1.1ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 201ms (Views: 192.8ms | ActiveRecord: 1.8ms | Allocations: 7752)
+
+
+Started GET "//posts" for 172.19.0.1 at 2022-06-25 10:43:29 +0000
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[35mSQL (0.7ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 14ms (Views: 5.3ms | ActiveRecord: 1.6ms | Allocations: 2014)
+
+
+Started GET "//posts" for 172.19.0.1 at 2022-06-25 10:43:30 +0000
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 5.1ms | ActiveRecord: 0.9ms | Allocations: 2014)
+
+
+Started GET "//posts" for 172.19.0.1 at 2022-06-25 10:43:31 +0000
+Processing by PostsController#index as */*
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[35mSQL (0.9ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 37ms (Views: 8.2ms | ActiveRecord: 1.9ms | Allocations: 2014)
+
+
+Started GET "//posts" for 172.19.0.1 at 2022-06-25 10:43:32 +0000
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[35mSQL (0.6ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 11ms (Views: 5.1ms | ActiveRecord: 1.0ms | Allocations: 2014)
+
+
+Started GET "//posts" for 172.19.0.1 at 2022-06-25 10:43:35 +0000
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[35mSQL (0.6ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 5.3ms | ActiveRecord: 0.9ms | Allocations: 2014)
+
+
+Started GET "//posts" for 172.19.0.1 at 2022-06-25 10:43:36 +0000
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[35mSQL (0.9ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 5.1ms | ActiveRecord: 1.8ms | Allocations: 2014)
+
+
+Started GET "//posts" for 172.19.0.1 at 2022-06-25 10:43:37 +0000
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[35mSQL (0.8ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 12ms (Views: 5.7ms | ActiveRecord: 1.3ms | Allocations: 2014)
+
+
+Started GET "//posts" for 172.19.0.1 at 2022-06-25 10:43:38 +0000
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[35mSQL (0.7ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 14ms (Views: 5.6ms | ActiveRecord: 1.6ms | Allocations: 2014)
+
+
+Started GET "//posts" for 172.19.0.1 at 2022-06-25 10:43:39 +0000
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[35mSQL (0.7ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 5.1ms | ActiveRecord: 1.4ms | Allocations: 2014)
+
+
+Started GET "//posts" for 172.19.0.1 at 2022-06-25 10:43:40 +0000
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[35mSQL (0.7ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 4.9ms | ActiveRecord: 1.6ms | Allocations: 2014)
+
+
+Started GET "//posts" for 172.19.0.1 at 2022-06-25 10:43:40 +0000
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 5.5ms | ActiveRecord: 0.9ms | Allocations: 2014)
+
+
+Started GET "//posts" for 172.19.0.1 at 2022-06-25 10:43:41 +0000
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[35mSQL (0.6ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 5.5ms | ActiveRecord: 1.0ms | Allocations: 2014)
+
+
+Started GET "//posts" for 172.19.0.1 at 2022-06-25 10:43:42 +0000
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[35mSQL (0.7ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 4.7ms | ActiveRecord: 1.4ms | Allocations: 2014)
+
+
+Started GET "/sidekiq" for 172.19.0.1 at 2022-06-25 10:44:04 +0000
+Started GET "/sidekiq/javascripts/dashboard.js" for 172.19.0.1 at 2022-06-25 10:44:04 +0000
+Started GET "/sidekiq/stylesheets/application.css" for 172.19.0.1 at 2022-06-25 10:44:04 +0000
+Started GET "/sidekiq/stylesheets/bootstrap.css" for 172.19.0.1 at 2022-06-25 10:44:04 +0000
+Started GET "/sidekiq/javascripts/application.js" for 172.19.0.1 at 2022-06-25 10:44:05 +0000
+Started GET "/sidekiq/stylesheets/application-dark.css" for 172.19.0.1 at 2022-06-25 10:44:05 +0000
+Started GET "/sidekiq/images/status.png" for 172.19.0.1 at 2022-06-25 10:44:05 +0000
+Started GET "/sidekiq/images/favicon.ico" for 172.19.0.1 at 2022-06-25 10:44:05 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:44:10 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:44:15 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:44:21 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:44:26 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:44:31 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:44:36 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:44:41 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:44:45 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:44:51 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:44:56 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:45:00 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:45:06 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:45:11 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:45:16 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:45:20 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:45:26 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:45:30 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:45:36 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:45:41 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:45:46 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:45:50 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:45:56 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:46:01 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:46:05 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:46:11 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:46:16 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:46:21 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:46:26 +0000
+Started GET "//posts" for 172.19.0.1 at 2022-06-25 10:46:28 +0000
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[35mSQL (0.7ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 14ms (Views: 5.8ms | ActiveRecord: 1.3ms | Allocations: 2015)
+
+
+Started GET "//posts" for 172.19.0.1 at 2022-06-25 10:46:29 +0000
+Processing by PostsController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:17:in `authentication'
+  [1m[35mSQL (0.8ms)[0m  [1m[34mSELECT `posts`.`id` AS t0_r0, `posts`.`title` AS t0_r1, `posts`.`body` AS t0_r2, `posts`.`tags` AS t0_r3, `posts`.`created_at` AS t0_r4, `posts`.`updated_at` AS t0_r5, `posts`.`user_id` AS t0_r6, `comments`.`id` AS t1_r0, `comments`.`description` AS t1_r1, `comments`.`created_at` AS t1_r2, `comments`.`updated_at` AS t1_r3, `comments`.`post_id` AS t1_r4, `comments`.`user_id` AS t1_r5 FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id`[0m
+  ↳ app/controllers/posts_controller.rb:8:in `index'
+Completed 200 OK in 18ms (Views: 8.9ms | ActiveRecord: 1.4ms | Allocations: 2028)
+
+
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:46:31 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:46:35 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:46:41 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:46:46 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:46:51 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:46:55 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:47:01 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:47:06 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:47:11 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:47:15 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:47:21 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:47:25 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:47:31 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:47:36 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:47:41 +0000
+Started GET "/sidekiq" for 172.19.0.1 at 2022-06-25 10:47:45 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:47:50 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:47:55 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:48:01 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:48:06 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:48:11 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:48:15 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:48:21 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:48:26 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:49:33 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:49:35 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:49:41 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:49:46 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:49:50 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:49:55 +0000
+Started GET "/sidekiq" for 172.19.0.1 at 2022-06-25 10:49:59 +0000
+Started GET "/" for 172.19.0.1 at 2022-06-25 10:50:05 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:50:05 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 21.1ms | Allocations: 656)
+Completed 200 OK in 147ms (Views: 73.4ms | ActiveRecord: 0.0ms | Allocations: 5786)
+
+
+Started GET "/sidekiq" for 172.19.0.1 at 2022-06-25 10:50:27 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:50:33 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:50:38 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:50:43 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:50:48 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:50:53 +0000
+Started GET "/sidekiq/stats" for 172.19.0.1 at 2022-06-25 10:50:58 +0000

@@ -7,6 +7,8 @@
   #   redis_port = Rails.env.REDIS_PORT
   #   redis_db =  Rails.env.REDIS_DB
   # # end
+
+  #redis configuration for sidekiq
   
   Sidekiq.configure_server do |config|
     config.redis = { url: ENV.fetch('REDIS_URL_SIDEKIQ', 'redis://redis:6379/1') }

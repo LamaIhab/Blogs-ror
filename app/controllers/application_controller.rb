@@ -1,29 +1,28 @@
 class ApplicationController < ActionController::API
-	  SECRET = "yoursecretword"
+ SECRET = "yoursecretword"
 
 # function used as middleware function to be called before any controller operates
-  def authentication
+def authentication
     # making a request to a secure route, token must be included in the headers
-   # render json: {token: request.headers["token"]}
+    begin
      decode_data = decode_user_data(request.headers["token"])
-if !decode_data
-  render json: { message: "Unauthorized" },status: 401
-  return
-end
-    # # getting user id from a nested JSON in an array.
-     user_id= decode_data[0]['user_data']
-    # # find a user in the database to be sure token is for a real user
-     user = User.find(user_id)
-
-    # # The barebone of this is to return true or false, as a middleware
-    # # its main purpose is to grant access or return an error to the user
-
+     if !decode_data
+      render json: { message: "Unauthorized" },status: 401
+      return
+    end
+    # getting user id from a nested JSON in an array.
+    user_id= decode_data[0]['user_data']
+    # find a user in the database to be sure token is for a real user
+    user = User.find(user_id)
     if user
       return true
     else
       render json: { message: "Unauthorized" },status: 401
-   end
+    end
+  rescue => e
+    render json: {message: "Unauthorized"},status: 401
   end
+end
 
   # turn user data (payload) to an encrypted string  [ A ]
   def encode_user_data(payload)
