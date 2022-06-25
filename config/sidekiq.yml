@@ -3,8 +3,8 @@
 :schedule:
   delete_posts:
 #     cron: '0 * * * * *'   # Runs once per minute
-class: DeletePosts
+     class: DeletePosts
      every: '24h' # configuring sidekiq scheduler to run every 24 hours and call delete_posts
 
 
-     :dynamic: true
+:dynamic: true

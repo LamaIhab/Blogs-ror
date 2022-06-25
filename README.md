@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To run the blog application, run docker-compose up and go to http://0.0.0.0:3001 or http://127.0.0.0:3001 in the browser.
 
-Things you may want to cover:
+To run migration scripts in the new database, please click on "Run pending migrations" button that will appear once you open the application on the web.
 
-* Ruby version
+To test apis easily,kindly use the postman collection added to this repository.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
