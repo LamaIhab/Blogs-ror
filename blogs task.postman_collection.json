@@ -1,0 +1,425 @@
+{
+	"info": {
+		"_postman_id": "9468c846-ef38-45ce-939c-f97944089c6c",
+		"name": "blogs task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sign up",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://0.0.0.0:3001/signup?email=lamaib@gmail.com&password=1234444&image=https://rfudijc.com&name=lamaaaa",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3001",
+					"path": [
+						"signup"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "lamaib@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "1234444"
+						},
+						{
+							"key": "image",
+							"value": "https://rfudijc.com"
+						},
+						{
+							"key": "name",
+							"value": "lamaaaa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://0.0.0.0:3001/login?email=lamaib@gmail.com&password=1234444",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3001",
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "lamaib@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "1234444"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create post",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2RhdGEiOjN9.Yy5y2elEMqHXbm40PviIQ5cRUb_8rkhJduwrwAePJIo",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"tags\":[\"test_tags\"]\n}"
+				},
+				"url": {
+					"raw": "http://0.0.0.0:3001/posts?title=test post user 3&body=testing this post",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3001",
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "tags",
+							"value": "[lama]",
+							"disabled": true
+						},
+						{
+							"key": "title",
+							"value": "test post user 3"
+						},
+						{
+							"key": "body",
+							"value": "testing this post"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update post",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2RhdGEiOjN9.Yy5y2elEMqHXbm40PviIQ5cRUb_8rkhJduwrwAePJIo",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"tags\":[\"edit_tags\"]\n}"
+				},
+				"url": {
+					"raw": "http://0.0.0.0:3001/posts/5?body=see",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3001",
+					"path": [
+						"posts",
+						"5"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "ses",
+							"disabled": true
+						},
+						{
+							"key": "body",
+							"value": "see"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create comment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2RhdGEiOjN9.Yy5y2elEMqHXbm40PviIQ5cRUb_8rkhJduwrwAePJIo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://0.0.0.0:3001/comments/?post_id=5&description=thank you!!!",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3001",
+					"path": [
+						"comments",
+						""
+					],
+					"query": [
+						{
+							"key": "post_id",
+							"value": "5"
+						},
+						{
+							"key": "description",
+							"value": "thank you!!!"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete post",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2RhdGEiOjN9.Yy5y2elEMqHXbm40PviIQ5cRUb_8rkhJduwrwAePJIo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://0.0.0.0:3001/posts/5",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3001",
+					"path": [
+						"posts",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update comment",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2RhdGEiOjJ9.nEKSlNUFknc-LwzYtSUGhSnaJYqfwRmdbsOM2HTjxvk",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://0.0.0.0:3001/comments/4?description=sooo",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3001",
+					"path": [
+						"comments",
+						"4"
+					],
+					"query": [
+						{
+							"key": "description",
+							"value": "sooo"
+						},
+						{
+							"key": "body",
+							"value": "see",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete comment",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2RhdGEiOjJ9.nEKSlNUFknc-LwzYtSUGhSnaJYqfwRmdbsOM2HTjxvk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://0.0.0.0:3001/comments/1",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3001",
+					"path": [
+						"comments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all posts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2RhdGEiOjJ9.nEKSlNUFknc-LwzYtSUGhSnaJYqfwRmdbsOM2HTjxvk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://0.0.0.0:3001/posts",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3001",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all comments",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2RhdGEiOjN9.Yy5y2elEMqHXbm40PviIQ5cRUb_8rkhJduwrwAePJIo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://0.0.0.0:3001/comments",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3001",
+					"path": [
+						"comments"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
